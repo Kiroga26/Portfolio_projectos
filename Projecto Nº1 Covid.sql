@@ -12,23 +12,23 @@ from Portfolio..CovidDeaths
 WHERE location = 'Portugal'
 order by 1,2
 
--- procurar total de casos vs população
--- mostra a porcentagem de populaçao que contraiu covid
+-- procurar total de casos vs populaÃ§Ã£o
+-- mostra a porcentagem de populaÃ§ao que contraiu covid
 
-SELECT location, date, population, total_cases, (total_cases/population)*100 as porcentagem_populaçao
+SELECT location, date, population, total_cases, (total_cases/population)*100 as porcentagem_populaÃ§ao
 from Portfolio..CovidDeaths
 WHERE location = 'Portugal'
 where continent is not null
 order by 1,2
 
--- procurar os paises com maior porcentagem de infeção comparado com a população
+-- procurar os paises com maior porcentagem de infeÃ§Ã£o comparado com a populaÃ§Ã£o
 
-SELECT location, population, MAX(total_cases) as MaiorcontagemInfeçao, MAX((total_cases/population))*100 as porcentagem_populaçao
+SELECT location, population, MAX(total_cases) as MaiorcontagemInfeÃ§ao, MAX((total_cases/population))*100 as porcentagem_populaÃ§ao
 from Portfolio..CovidDeaths
 --WHERE location = 'Portugal'
 where continent is not null
 Group by location, population
-order by porcentagem_populaçao desc
+order by porcentagem_populaÃ§ao desc
 
 -- Mostrar paises com maior taxa de mortes por populacao
 
@@ -64,7 +64,7 @@ where continent is not null
 --GROUP BY date
 order by 1,2
 
--- procurar o total populaçao vs vacinaçao
+-- procurar o total populaÃ§ao vs vacinaÃ§ao
 
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
 , sum(cast(vac.new_vaccinations as int)) over (partition by dea.location order by 
